@@ -1,0 +1,7 @@
+matplotlib
+PyQt5
+numpy
+tkinter
+mplcursors
+pygame
+pyglet
