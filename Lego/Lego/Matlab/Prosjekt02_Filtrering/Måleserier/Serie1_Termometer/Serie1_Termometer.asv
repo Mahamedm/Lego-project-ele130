@@ -1,0 +1,5 @@
+% Måling av temperatur med termometer
+clear; close all
+load(['filnavn.mat'])
+T = Lys;  % temperatur i det kalde og varme vannet
+

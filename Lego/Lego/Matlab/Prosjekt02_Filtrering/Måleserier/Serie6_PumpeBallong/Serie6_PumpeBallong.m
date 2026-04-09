@@ -2,3 +2,5 @@
 clear; close all
 load('Serie6_SinusStoy_u20.mat')
 q = Lys;       % volumstrøm inn og ut av ballong [cl/s]
+t_s = t;
+
