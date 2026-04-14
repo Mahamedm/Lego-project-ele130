@@ -63,7 +63,17 @@ while ~JoyMainSwitch
         end
 
         % Hent målinger fra sensorene
-        Lys(k) = double(readLightIntensity(myColorSensor,'reflected'));
+        % Lys(k) = double(readLightIntensity(myColorSensor,'reflected'));
+           
+        % Hent målinger fra sensorene
+        LysRaw(k) = double(readLightIntensity(myColorSensor,'reflected'));
+        
+        if k == 1
+            Lys0 = LysRaw(k);   % reference value on starting gray
+        end
+        
+        Lys(k) = LysRaw(k) - Lys0;
+
 
         % Data fra styrestikke. Utvid selv med andre knapper og akser
         [JoyAxes,JoyButtons] = HentJoystickVerdier(joystick);
