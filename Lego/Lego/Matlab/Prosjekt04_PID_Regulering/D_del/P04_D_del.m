@@ -103,8 +103,8 @@ while ~JoyMainSwitch
     
     if k==1
         % Regulatorparameter
-        tau_e = ..;  % tidskonstant filtrering av e(k)
-        Kd = ..;    % start med lave verdier, typisk 0.005
+        tau_e = 0.5;  % tidskonstant filtrering av e(k)
+        Kd = 0.2;    % start med lave verdier, typisk 0.005
 
         % Referanse-verdier og tidspunkt, og indeks for å spille lyd
         tidspunkt =  [0, 2,  6,   10,   14,  18];  % sekund
@@ -145,9 +145,9 @@ while ~JoyMainSwitch
         e(k) = r(k) - y(k);
 
         % Lag kode for D-bidraget
-        alfa_e  = ..;  % tidsavhengig alfa
-        e_f(k) = ..
-        D(k) = ..
+        alfa_e  = 1 - exp(-Ts/tau_e);          % same pattern as alfa_pos above
+        e_f(k) = (1 - alfa_e)*e_f(k-1) + alfa_e*e(k);   % filtered error (low-pass on e)
+        D(k) = Kd * (e_f(k) - e_f(k-1)) / Ts;           % derivative of filtered error
 
         % Spiller av varierende frekvens ved hvert skifte
         if online && r(k) ~= r(k-1)

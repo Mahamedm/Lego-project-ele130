@@ -103,7 +103,7 @@ while ~JoyMainSwitch
 
     if k==1
         % Regulatorparameter
-        Ki = ..;    % start med lave verdier, typisk 0.005
+        Ki = 0.2;    % start med lave verdier, typisk 0.005
 
         % Referanse-verdier og tidspunkt, og indeks for å spille lyd
         tidspunkt =  [0, 2,  6,   10,   14,  18];  % sekund
@@ -147,7 +147,7 @@ while ~JoyMainSwitch
         e(k) = r(k)-y(k);
 
         % Lag kode for I-bidraget
-        I(k) = ..
+        I(k) = I(k-1) + Ki * e(k) * Ts;
 
         % Integratorbegrensing (vent med å implementere denne)
         % if I(k) > I_max

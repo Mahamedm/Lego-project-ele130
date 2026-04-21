@@ -13,8 +13,8 @@
 %         EXPERIMENT SETUP, FILENAME AND FIGURE
 
 clear; close all   % Alltid lurt å rydde workspace opp først
-online = 0;     % Online mot EV3 eller mot lagrede data?
-plotting = 0;  % Skal det plottes mens forsøket kjøres 
+online = 1;     % Online mot EV3 eller mot lagrede data?
+plotting = 1;  % Skal det plottes mens forsøket kjøres 
 filename = 'P04_Kp_01.mat'; % Navnet på datafilen når online=0.
 
 if online  
@@ -105,7 +105,7 @@ while ~JoyMainSwitch
 
     if k==1
         % Regulatorparameter
-        Kp = ..;    % start med lave verdier, typisk 0.005
+        Kp = 0.2;    % start med lave verdier, typisk 0.005
 
         % Referanse-verdier og tidspunkt, og indeks for å spille lyd
         tidspunkt =  [0, 2,  6,   10,   14,  18];  % sekund
@@ -146,7 +146,7 @@ while ~JoyMainSwitch
         e(k) = r(k) - y(k);
 
         % Lag kode for P-bidraget
-        P(k) = ..;
+        P(k) = Kp * e(k);
 
         % Spiller av varierende frekvens ved hvert skifte
         if online && r(k) ~= r(k-1)

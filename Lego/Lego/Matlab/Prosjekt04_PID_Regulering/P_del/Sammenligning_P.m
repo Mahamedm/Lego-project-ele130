@@ -6,9 +6,9 @@
 %   d) Kommenter deretter ut linje 3, kjør linje 4
 
 clear;close all                           % linje 1
-load('P04_Kp_XY.mat');farge = 'b';        % linje 2, liten Kp
-% load('P04_Kp_YZ.mat');farge = 'r';        % linje 3, litt større Kp
-% load('P04_Kp_ZX.mat');farge = [0 0.6 0];  % linje 4, størst Kp
+load('P04_Kp_001.mat');farge = 'b';        % linje 2, liten Kp
+load('P04_Kp_01.mat');farge = 'r';        % linje 3, litt større Kp
+load('P04_Kp_02.mat');farge = [0 0.6 0];  % linje 4, størst Kp
 
 % Åpne figure nummer 1
 figure(1)
@@ -38,5 +38,5 @@ yline(-100, 'k:','linewidth',2,'HandleVisibility','off')
 grid on
 title('P-bidraget')
 xlabel('Tid [sek]')
-legend('$K_p=...$', '$K_p=...$', '$K_p=...$')
+legend('$K_p=0.01$', '$K_p=0.1$', '$K_p=0.2$')
 
