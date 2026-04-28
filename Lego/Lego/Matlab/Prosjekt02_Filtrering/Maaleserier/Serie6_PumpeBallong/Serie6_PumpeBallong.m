@@ -6,9 +6,10 @@ t_s = t;
 
 FrekvensSpekter(t_s, q);
 fs = 2 * 2.35;
-fc = 1.2;
+fc = 1.5;
 [B, A] = butter(2, fc / (fs/2), 'low');
 filtered = IIRfilter(t_s, q, B, A);
+
 
 
 figure;
